@@ -60,9 +60,9 @@ class WebviewImpl extends Webview {
     _isNaivgating.value = true;
   }
 
-  void notifyUrlChanged(String url) {
+  void notifyUrlChanged(String url, String method, String body) {
     for (final callback in _onUrlRequestCallbacks) {
-      callback(url);
+      callback(url, method, body);
     }
   }
 

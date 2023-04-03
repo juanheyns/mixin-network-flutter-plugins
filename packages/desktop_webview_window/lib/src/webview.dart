@@ -10,7 +10,7 @@ typedef OnHistoryChangedCallback = void Function(
 
 /// Callback when WebView start to load a URL.
 /// [url] is the URL string.
-typedef OnUrlRequestCallback = void Function(String url);
+typedef OnUrlRequestCallback = void Function(String url, String method, String body);
 
 /// Callback when WebView receives a web message
 /// [message] constains the webmessage
