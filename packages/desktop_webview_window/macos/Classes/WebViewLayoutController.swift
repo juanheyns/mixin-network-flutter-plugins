@@ -207,7 +207,10 @@ extension WebViewLayoutController: WKNavigationDelegate {
       return
     }
 
-    let body = navigationAction.request.httpBody?.base64EncodedString() ?? ""
+    guard let body = navigationAction.request.httpBody?.base64EncodedString() ?? "" else {
+      decisionHandler(.cancel)
+      return
+    }
 
     methodChannel.invokeMethod("onUrlRequested", arguments: [
       "id": viewId,

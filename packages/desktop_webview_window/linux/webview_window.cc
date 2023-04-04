@@ -205,9 +205,11 @@ gboolean WebviewWindow::DecidePolicy(WebKitPolicyDecision *decision, WebKitPolic
     auto *navigation_action = webkit_navigation_policy_decision_get_navigation_action(navigation_decision);
     auto *request = webkit_navigation_action_get_request(navigation_action);
     auto *uri = webkit_uri_request_get_uri(request);
+    auto *method = webkit_uri_request_get_http_method(request);
     auto *args = fl_value_new_map();
     fl_value_set(args, fl_value_new_string("id"), fl_value_new_int(window_id_));
     fl_value_set(args, fl_value_new_string("url"), fl_value_new_string(uri));
+    fl_value_set(args, fl_value_new_string("method"), fl_value_new_string(uri));
     fl_method_channel_invoke_method(
         FL_METHOD_CHANNEL(method_channel_), "onUrlRequested", args,
         nullptr, nullptr, nullptr);
