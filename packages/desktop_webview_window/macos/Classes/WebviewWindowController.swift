@@ -60,6 +60,7 @@ class WebviewWindowController: NSWindowController {
 
     window?.isReleasedWhenClosed = false
     window?.delegate = self
+    window?.makeKeyAndOrderFront(self)
   }
 
   override func keyDown(with event: NSEvent) {
