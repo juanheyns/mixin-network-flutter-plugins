@@ -61,7 +61,9 @@ class WebviewWindowController: NSWindowController {
     window?.isReleasedWhenClosed = false
     window?.delegate = self
     window?.makeKeyAndOrderFront(self)
-    print("WebviewWindowController.makeKeyAndOrderFront")
+    print("WebviewWindowController: window?.makeKeyAndOrderFront")
+    NSApplication.shared.activate(ignoringOtherApps: true)
+    print("WebviewWindowController: NSApplication.shared.activate")
   }
 
   override func keyDown(with event: NSEvent) {
